@@ -8,28 +8,27 @@ uses
   Classes, SysUtils,
   Windows, Messages, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ComCtrls, ExtCtrls,
-  PythonEngine, Vcl.PythonGUIInputOutput;
+  PythonEngine, PythonGUIInputOutput;
 
 type
+
+  { TForm1 }
+
   TForm1 = class(TForm)
-    PythonEngine1: TPythonEngine;
+    Memo2: TMemo;
+    Splitter1: TSplitter;
     Memo1: TMemo;
     Panel1: TPanel;
-    Button1: TButton;
-    Splitter1: TSplitter;
-    Button2: TButton;
-    Button3: TButton;
+    BExecute: TButton;
+    BLoad: TButton;
+    BSave: TButton;
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
+    PythonEngine1: TPythonEngine;
     PythonGUIInputOutput1: TPythonGUIInputOutput;
-    Memo2: TMemo;
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
-  private
-    { Déclarations privées }
-  public
-    { Déclarations publiques }
+    procedure BExecuteClick(Sender: TObject);
+    procedure BLoadClick(Sender: TObject);
+    procedure BSaveClick(Sender: TObject);
   end;
 
 
@@ -40,12 +39,12 @@ implementation
 
 {$R *.DFM}
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TForm1.BExecuteClick(Sender: TObject);
 begin
   PythonEngine1.ExecStrings( Memo1.Lines );
 end;
 
-procedure TForm1.Button2Click(Sender: TObject);
+procedure TForm1.BLoadClick(Sender: TObject);
 begin
   with OpenDialog1 do
     begin
@@ -54,7 +53,7 @@ begin
     end;
 end;
 
-procedure TForm1.Button3Click(Sender: TObject);
+procedure TForm1.BSaveClick(Sender: TObject);
 begin
   with SaveDialog1 do
     begin

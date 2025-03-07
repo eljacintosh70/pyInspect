@@ -4,7 +4,7 @@ object Form1: TForm1
   Width = 544
   Height = 375
   VertScrollBar.Range = 200
-  ActiveControl = Button1
+  ActiveControl = BExecute
   Caption = 'Demo of Python'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -45,42 +45,6 @@ object Form1: TForm1
     ScrollBars = ssBoth
     TabOrder = 1
   end
-  object Panel1: TPanel
-    Left = 0
-    Top = 292
-    Width = 528
-    Height = 44
-    Align = alBottom
-    BevelOuter = bvNone
-    TabOrder = 0
-    object Button1: TButton
-      Left = 6
-      Top = 8
-      Width = 115
-      Height = 25
-      Caption = 'Execute script'
-      TabOrder = 0
-      OnClick = Button1Click
-    end
-    object Button2: TButton
-      Left = 168
-      Top = 8
-      Width = 91
-      Height = 25
-      Caption = 'Load script...'
-      TabOrder = 1
-      OnClick = Button2Click
-    end
-    object Button3: TButton
-      Left = 264
-      Top = 8
-      Width = 89
-      Height = 25
-      Caption = 'Save script...'
-      TabOrder = 2
-      OnClick = Button3Click
-    end
-  end
   object Memo2: TMemo
     Left = 0
     Top = 0
@@ -97,26 +61,66 @@ object Form1: TForm1
     ScrollBars = ssBoth
     TabOrder = 2
   end
+  object Panel1: TPanel
+    Left = 0
+    Top = 292
+    Width = 528
+    Height = 44
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 0
+    object BExecute: TButton
+      Left = 6
+      Top = 8
+      Width = 115
+      Height = 25
+      Caption = 'Execute script'
+      TabOrder = 0
+      OnClick = BExecuteClick
+    end
+    object BLoad: TButton
+      Left = 176
+      Top = 8
+      Width = 91
+      Height = 25
+      Caption = 'Load script...'
+      TabOrder = 1
+      OnClick = BLoadClick
+    end
+    object BSave: TButton
+      Left = 273
+      Top = 8
+      Width = 89
+      Height = 25
+      Caption = 'Save script...'
+      TabOrder = 2
+      OnClick = BSaveClick
+    end
+  end
   object PythonEngine1: TPythonEngine
     IO = PythonGUIInputOutput1
-    Left = 32
-  end
-  object OpenDialog1: TOpenDialog
-    DefaultExt = '*.py'
-    Filter = 'Python files|*.py|Text files|*.txt|All files|*.*'
-    Title = 'Open'
-    Left = 176
-  end
-  object SaveDialog1: TSaveDialog
-    DefaultExt = '*.py'
-    Filter = 'Python files|*.py|Text files|*.txt|All files|*.*'
-    Title = 'Save As'
-    Left = 208
+    Left = 80
+    Top = 16
   end
   object PythonGUIInputOutput1: TPythonGUIInputOutput
     UnicodeIO = True
     RawOutput = False
     Output = Memo2
-    Left = 64
+    Left = 80
+    Top = 72
+  end
+  object OpenDialog1: TOpenDialog
+    DefaultExt = '*.py'
+    Filter = 'Python files|*.py|Text files|*.txt|All files|*.*'
+    Title = 'Open'
+    Left = 264
+    Top = 16
+  end
+  object SaveDialog1: TSaveDialog
+    DefaultExt = '*.py'
+    Filter = 'Python files|*.py|Text files|*.txt|All files|*.*'
+    Title = 'Save As'
+    Left = 264
+    Top = 72
   end
 end
