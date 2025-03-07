@@ -1,0 +1,50 @@
+# Compiled source #
+###################
+*.dcu
+*.obj
+*.exe
+*.dll
+*.bpl
+*.bpi
+*.dcp
+*.rsm
+*.stat
+*.map
+*.o
+*.ppu
+*.rsj
+*.compiled
+*.lib
+*.pyd
+
+# Generated source #
+###################
+*.hpp
+
+# Backup files    #
+###################
+*.~*
+*.bak
+backup
+__history
+
+# IDE Files	  #
+###################
+*.dproj.local
+*.groupproj.local
+*.identcache
+*.dsk
+*.tvsconfig
+*.otares
+*.drc
+*.res
+*.local
+
+# Output Folders  #
+###################
+/Win32
+/Win64
+/OSX32
+*.Patch
+*.#00
+*.pch
