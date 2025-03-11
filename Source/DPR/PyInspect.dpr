@@ -4,6 +4,7 @@ program PyInspect;
 
 uses
   Forms,
+  Python in '..\common\Python.pas',
   Unit1 in '..\VCL\Unit1.pas' {Form1};
 
 {$R *.res}

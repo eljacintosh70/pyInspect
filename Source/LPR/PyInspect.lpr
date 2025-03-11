@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, Unit1, LResources, P4DLaz
+  Forms, Unit1, Python, LResources
   { you can add units after this };
 
 {$IFDEF WINDOWS}{$R PyInspect.rc}{$ENDIF}

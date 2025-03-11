@@ -103,6 +103,8 @@
         <BT_BuildType>Debug</BT_BuildType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
+        <DCC_DcuOutput>lib\win64</DCC_DcuOutput>
+        <DCC_ExeOutput>lib\win64</DCC_ExeOutput>
         <DCC_UnitSearchPath>..\..\python4delphi\Source\vcl;..\..\python4delphi\Source;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <BT_BuildType>Debug</BT_BuildType>
@@ -113,6 +115,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
+        <DCCReference Include="..\common\Python.pas"/>
         <DCCReference Include="..\VCL\Unit1.pas">
             <Form>Form1</Form>
         </DCCReference>
@@ -180,6 +183,12 @@
             </Platforms>
             <Deployment>
                 <DeployFile LocalName="PyInspect.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win64">
+                        <RemoteName>PyInspect.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="lib\win64\PyInspect.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win64">
                         <RemoteName>PyInspect.exe</RemoteName>
                         <Overwrite>true</Overwrite>

@@ -14,6 +14,8 @@ object Form1: TForm1
   Font.Pitch = fpVariable
   Font.Style = []
   OldCreateOrder = True
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
@@ -96,18 +98,6 @@ object Form1: TForm1
       TabOrder = 2
       OnClick = BSaveClick
     end
-  end
-  object PythonEngine1: TPythonEngine
-    IO = PythonGUIInputOutput1
-    Left = 80
-    Top = 16
-  end
-  object PythonGUIInputOutput1: TPythonGUIInputOutput
-    UnicodeIO = True
-    RawOutput = False
-    Output = Memo2
-    Left = 80
-    Top = 72
   end
   object OpenDialog1: TOpenDialog
     DefaultExt = '*.py'

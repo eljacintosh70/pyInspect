@@ -8,7 +8,7 @@ uses
   Classes, SysUtils,
   Windows, Messages, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ComCtrls, ExtCtrls,
-  PythonEngine, PythonGUIInputOutput;
+  Python;
 
 type
 
@@ -24,11 +24,11 @@ type
     BSave: TButton;
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
-    PythonEngine1: TPythonEngine;
-    PythonGUIInputOutput1: TPythonGUIInputOutput;
     procedure BExecuteClick(Sender: TObject);
     procedure BLoadClick(Sender: TObject);
     procedure BSaveClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   end;
 
 
@@ -39,9 +39,18 @@ implementation
 
 {$R *.DFM}
 
+
 procedure TForm1.BExecuteClick(Sender: TObject);
+var
+  s: string;
 begin
-  PythonEngine1.ExecStrings( Memo1.Lines );
+  s := Memo1.Lines.Text;
+  s := Execute(s);
+  if s <> '' then
+  begin
+    s := 'Result: ' + s;
+    Memo2.Lines.Add(s);
+  end;
 end;
 
 procedure TForm1.BLoadClick(Sender: TObject);
@@ -60,6 +69,16 @@ begin
       if Execute then
         Memo1.Lines.SaveToFile( FileName );
     end;
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  InitEngine(Self, Memo2);
+end;
+
+procedure TForm1.FormDestroy(Sender: TObject);
+begin
+  CloseEngine;
 end;
 
 end.
