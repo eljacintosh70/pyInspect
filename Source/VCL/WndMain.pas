@@ -15,20 +15,25 @@ type
   { TForm1 }
 
   TForm1 = class(TForm)
-    Memo2: TMemo;
-    Splitter1: TSplitter;
     Memo1: TMemo;
     Panel1: TPanel;
     BExecute: TButton;
+    Splitter1: TSplitter;
     BLoad: TButton;
     BSave: TButton;
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
+    Memo2: TMemo;
+    BMain: TButton;
+    BLocals: TButton;
+    Label1: TLabel;
     procedure BExecuteClick(Sender: TObject);
     procedure BLoadClick(Sender: TObject);
     procedure BSaveClick(Sender: TObject);
+    procedure BMainClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure BLocalsClick(Sender: TObject);
   end;
 
 
@@ -39,6 +44,10 @@ implementation
 
 {$R *.DFM}
 
+uses
+  WndTree, InspectPython;
+
+{ TForm1 }
 
 procedure TForm1.BExecuteClick(Sender: TObject);
 var
@@ -62,6 +71,11 @@ begin
     end;
 end;
 
+procedure TForm1.BLocalsClick(Sender: TObject);
+begin
+  inspectScope('Exploring -- locals', locals);
+end;
+
 procedure TForm1.BSaveClick(Sender: TObject);
 begin
   with SaveDialog1 do
@@ -69,6 +83,11 @@ begin
       if Execute then
         Memo1.Lines.SaveToFile( FileName );
     end;
+end;
+
+procedure TForm1.BMainClick(Sender: TObject);
+begin
+  inspect('Exploring -- __maim__', __main__);
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);

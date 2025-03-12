@@ -105,7 +105,7 @@
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <DCC_DcuOutput>lib\win64</DCC_DcuOutput>
         <DCC_ExeOutput>lib\win64</DCC_ExeOutput>
-        <DCC_UnitSearchPath>..\..\python4delphi\Source\vcl;..\..\python4delphi\Source;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\..\python4delphi\Source\vcl;..\..\python4delphi\Source;..\..\VirtualTreeView\Source;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <BT_BuildType>Debug</BT_BuildType>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
@@ -116,6 +116,11 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="..\common\Python.pas"/>
+        <DCCReference Include="..\common\InspectBase.pas"/>
+        <DCCReference Include="..\VCL\WndTree.pas">
+            <Form>TreeForm</Form>
+        </DCCReference>
+        <DCCReference Include="..\common\InspectPython.pas"/>
         <DCCReference Include="..\VCL\WndMain.pas">
             <Form>Form1</Form>
         </DCCReference>

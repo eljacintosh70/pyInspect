@@ -3,6 +3,7 @@
   <ProjectGroup FileVersion="2">
     <Targets>
       <Target FileName="..\..\python4delphi\Packages\FPC\p4dlaz.lpk"/>
+      <Target FileName="..\..\VirtualTreeView\Source\virtualtreeview_package.lpk"/>
       <Target FileName="PyInspect.lpi">
         <BuildModes>
           <Mode Name="default"/>
