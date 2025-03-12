@@ -87,9 +87,55 @@ begin
 end;
 
 function  Execute(Expression: string): string;
+const
+  Py_single_input = 256;
+  Py_file_input   = 257;
+  Py_eval_input   = 258;
+var
+  e: TPythonEngine;
+  s2: Utf8String;
+  m : PPyObject;
+  globals, codeObj, res: PPyObject;
 begin
-  Engine.ExecString(Expression);
+  // Engine.ExecString(Expression);
   Result := '';
+  e := Python.Engine;
+  s2 := Utf8String(Expression);
+
+  m := e.GetMainModule;
+  globals := e.PyModule_GetDict(m);
+
+  // Try compiling in eval mode (for expressions)
+  codeObj := e.Py_CompileString(PAnsiChar(s2), '<stdin>', Py_eval_input);
+  if Assigned(codeObj) then
+  begin
+    // If eval mode works, execute it and print the result
+    res := e.PyEval_EvalCode(PPyCodeObject(codeObj), globals, locals);
+    if Assigned(res) then
+    begin
+      if res <> e.py_None then
+      begin
+        Result := Repr(res);
+      end;
+      e.Py_DECREF(res);
+    end;
+    e.Py_DECREF(codeObj);
+  end
+  else
+  begin
+    // If eval mode fails, assume it's a statement and run normally
+    e.PyErr_Clear();
+
+    codeObj := e.Py_CompileString(PAnsiChar(s2), '<stdin>', Py_file_input); // Py_single_input);
+    if Assigned(codeObj) then
+    begin
+      res := e.PyEval_EvalCode(PPyCodeObject(codeObj), globals, locals);
+      e.Py_DECREF(res);
+      e.Py_DECREF(codeObj);
+    end
+    else
+      e.PyErr_Print(); // Print syntax errors
+  end
 end;
 
 end.
