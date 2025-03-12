@@ -1,24 +1,25 @@
-unit Unit1;
+unit WndMain; 
 
-
+{$mode objfpc}{$H+}
 
 interface
 
 uses
-  Classes, SysUtils,
-  Windows, Messages, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, ComCtrls, ExtCtrls,
-  Python;
+  Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
+  StdCtrls, ExtCtrls, PairSplitter, Python;
 
 type
 
   { TForm1 }
 
-  TForm1 = class(TForm)
+  TForm1 = class(TForm)    
     Memo2: TMemo;
-    Splitter1: TSplitter;
+    PairSplitter1: TPairSplitter;
+    PairSplitterSide1: TPairSplitterSide;
+    PairSplitterSide2: TPairSplitterSide;   
     Memo1: TMemo;
     Panel1: TPanel;
+    Panel2: TPanel;
     BExecute: TButton;
     BLoad: TButton;
     BSave: TButton;
@@ -31,13 +32,12 @@ type
     procedure FormDestroy(Sender: TObject);
   end;
 
-
 var
-  Form1: TForm1;
+  Form1: TForm1; 
 
 implementation
 
-{$R *.DFM}
+{ TForm1 }
 
 
 procedure TForm1.BExecuteClick(Sender: TObject);
@@ -72,7 +72,7 @@ begin
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
-begin
+begin        
   InitEngine(Self, Memo2);
 end;
 
@@ -81,4 +81,8 @@ begin
   CloseEngine;
 end;
 
+initialization
+  {$I wndmain.lrs}
+
 end.
+

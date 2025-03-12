@@ -48,3 +48,5 @@ __history
 *.Patch
 *.#00
 *.pch
+Source/LPR/lib
+

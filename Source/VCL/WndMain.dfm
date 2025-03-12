@@ -5,7 +5,7 @@ object Form1: TForm1
   Height = 375
   VertScrollBar.Range = 200
   ActiveControl = BExecute
-  Caption = 'Demo of Python'
+  Caption = 'Inspect Python code'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

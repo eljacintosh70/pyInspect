@@ -3,7 +3,7 @@ object Form1: TForm1
   Height = 375
   Top = 155
   Width = 544
-  Caption = 'Form1'
+  Caption = 'Inspect Python Code'
   ClientHeight = 375
   ClientWidth = 544
   OnCreate = FormCreate

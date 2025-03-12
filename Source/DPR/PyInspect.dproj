@@ -116,7 +116,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="..\common\Python.pas"/>
-        <DCCReference Include="..\VCL\Unit1.pas">
+        <DCCReference Include="..\VCL\WndMain.pas">
             <Form>Form1</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">
