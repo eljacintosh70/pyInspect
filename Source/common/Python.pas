@@ -8,7 +8,7 @@ interface
 
 uses
   Classes, Controls, StdCtrls,
-  PythonEngine,  {$IFDEF FPC}lcl.{$ENDIF}PythonGUIInputOutput;
+  PythonEngine,  {$IFDEF FPC}Lcl.{$ENDIF}PythonGUIInputOutput;
 
 {$IF NOT DECLARED(Py_ssize_t)}  // older python4delphi
 type
